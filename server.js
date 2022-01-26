@@ -29,6 +29,7 @@ app.use(express.static('public'));
 
 
 app.get("/", (req, res) => {
+    console.log("get/");
     Pos.find((err, poses) => {
         if(err) console.log(err);
         const sendData = [];
