@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,10 @@
     "url": "https://github.com/chamwhy/streamMap/issues"
   },
   "homepage": "https://github.com/chamwhy/streamMap#readme",
+  "engines": {
+    "node": "14.4.0",
+    "npm": "6.14.5"
+  },
   "dependencies": {
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",
