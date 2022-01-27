@@ -7,7 +7,10 @@ const app = express();
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const Pos = require("./model");
-const bodyParser = require("body-parser");
+const join = require("path").join;
+
+const port = process.env.PORT | 3000;
+
 mongoose
   .connect(`mongodb+srv://chamwhy:${process.env.PASSWORD}@cluster0.zqsxj.mongodb.net/test`)
   .then(() => {
@@ -17,16 +20,20 @@ mongoose
     console.log(err);
   });
 
-app.set('views', __dirname + '/views');
+app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.engine('html', ejs.renderFile);
 
-const port = process.env.PORT | 3000;
+
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static('public'));
+app.use(express.static(join(__dirname, 'public')));
 console.log("done setting");
+
+app.get("/test", (req, res)=>{
+    console.log("test");
+});
 
 app.get("/", (req, res) => {
     console.log("get/");
